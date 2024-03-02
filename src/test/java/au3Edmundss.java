@@ -36,7 +36,9 @@ public class au3Edmundss {
 //Verify that the default option in Models dropdown is "Any Model"  and default years are 2012 and 2023 in year field:
         Assert.assertTrue((driver.findElement(By.xpath("//select[@id = 'usurp-make-select']")).isDisplayed()));
 
+        driver.findElement(By.xpath("//input[@value='2012']")).click();
             Assert.assertTrue((driver.findElement(By.xpath("//input[@value='2012']"))).isDisplayed());
+        driver.findElement(By.xpath("//input[@value='2023']")).click();
             Assert.assertTrue((driver.findElement(By.xpath("//input[@value='2023']"))).isDisplayed());
 //Verify that Model dropdown options are [Any Model, Model 3, Model S, Model X, Model Y, Cybertruck, Roadster]:
             Select selectModel = new Select(driver.findElement(By.xpath("//select[@id='usurp-model-select']")));
