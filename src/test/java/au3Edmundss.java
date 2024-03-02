@@ -37,7 +37,7 @@ public class au3Edmundss {
         Assert.assertTrue((driver.findElement(By.xpath("//select[@id = 'usurp-make-select']")).isDisplayed()));
 
             Assert.assertTrue((driver.findElement(By.xpath("//input[@value='2012']"))).isDisplayed());
-            Assert.assertTrue((driver.findElement(By.id("//input[@value='2023']"))).isDisplayed());
+            Assert.assertTrue((driver.findElement(By.xpath("//input[@value='2023']"))).isDisplayed());
 //Verify that Model dropdown options are [Any Model, Model 3, Model S, Model X, Model Y, Cybertruck, Roadster]:
             Select selectModel = new Select(driver.findElement(By.xpath("//select[@id='usurp-model-select']")));
         List<WebElement> models = selectModel.getOptions();
