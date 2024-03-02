@@ -43,16 +43,18 @@ public class au3Edmundss {
             Select yeardropdownMax = new Select(driver.findElement(By.id("//input[@value='2023']")));
             Assert.assertEquals(yeardropdownMax.getFirstSelectedOption().getText(), "2023");
 //Verify that Model dropdown options are [Any Model, Model 3, Model S, Model X, Model Y, Cybertruck, Roadster]:
-            List<String> expectedModels = List.of("Add Model", "Model 3", "Model S", "Model X", "Model Y", "Cybertruck", "Roadster");
-            List<WebElement> options = new Select(driver.findElement(By.id("usurp-model-select"))).getOptions();
+            Select selectModel = new Select(driver.findElement(By.id("usurp-model-select")));
+        List<WebElement> models = selectModel.getOptions();
+
 
             List<String> actualModels = new ArrayList<>();
-            for (WebElement option : options) {
-                actualModels.add(option.getText());
+            for (WebElement model : models) {
+                actualModels.add(model.getText());
             }
-            Assert.assertEquals(actualModels, expectedModels);
+        List<String> expectedModels = List.of("Add Model", "Model 3", "Model S", "Model X", "Model Y", "Cybertruck", "Roadster");
+        Assert.assertEquals(actualModels, expectedModels);
             //In Models dropdown choose Model 3:
-            modeldropdown.selectByVisibleText("Model 3");
+            selectModel.selectByVisibleText("Model 3");
             //Enter 2020 for year min field and hit enter (clear the existing year first):
         Thread.sleep(1000);
             driver.findElement(By.xpath("//input[@id='min-value-input-Year']")).click();
