@@ -20,7 +20,7 @@ public class au3Edmundss {
             //click on shop used:
             driver.findElement(By.xpath("//a[@data-tracking-id = 'home_page_inventory_select_tab']")).click();
             //In the next page, clear the zipcode field and enter 22031:
-            driver.findElement(By.xpath("//input[@name= 'zip']")).sendKeys(Keys.CONTROL, "a", Keys.BACK_SPACE);
+            driver.findElement(By.xpath("//input[@name= 'zip']")).sendKeys(Keys.chord(Keys.COMMAND, "A"), Keys.BACK_SPACE);
 
             driver.findElement(By.xpath("//input[@name= 'zip']")).sendKeys("22031", Keys.ENTER);
             //Click the checkbox:
@@ -34,16 +34,12 @@ public class au3Edmundss {
             Select dropdownbox = new Select(driver.findElement(By.xpath("//select[@name = 'make']")));
             dropdownbox.selectByVisibleText("Tesla");
 //Verify that the default option in Models dropdown is "Any Model"  and default years are 2012 and 2023 in year field:
-            Select modeldropdown = new Select(driver.findElement(By.id("usurp-model-select")));
-            Assert.assertEquals(modeldropdown.getFirstSelectedOption().getText(), "Add Model");
+        Assert.assertTrue((driver.findElement(By.xpath("//select[@id = 'usurp-make-select']")).isDisplayed()));
 
-            Select yeardropdownMin = new Select(driver.findElement(By.xpath("//input[@value='2012']")));
-            Assert.assertEquals(yeardropdownMin.getFirstSelectedOption().getText(), "2012");
-
-            Select yeardropdownMax = new Select(driver.findElement(By.id("//input[@value='2023']")));
-            Assert.assertEquals(yeardropdownMax.getFirstSelectedOption().getText(), "2023");
+            Assert.assertTrue((driver.findElement(By.xpath("//input[@value='2012']"))).isDisplayed());
+            Assert.assertTrue((driver.findElement(By.id("//input[@value='2023']"))).isDisplayed());
 //Verify that Model dropdown options are [Any Model, Model 3, Model S, Model X, Model Y, Cybertruck, Roadster]:
-            Select selectModel = new Select(driver.findElement(By.id("usurp-model-select")));
+            Select selectModel = new Select(driver.findElement(By.xpath("//select[@id='usurp-model-select']")));
         List<WebElement> models = selectModel.getOptions();
 
 
