@@ -25,7 +25,7 @@ public class au3Edmundss {
             driver.findElement(By.xpath("//input[@name= 'zip']")).sendKeys("22031", Keys.ENTER);
             //Click the checkbox:
         Thread.sleep(5000);
-        WebElement element = driver.findElement(By.xpath("//span[@class = 'd-inline-flex align-items-center']"));
+        WebElement element = driver.findElement(By.xpath("//label[@class= 'checkbox-facet d-flex align-items-center mb-0 justify-content-between'][2]"));
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("arguments[0].click();", element);
 
